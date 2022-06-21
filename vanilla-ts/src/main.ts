@@ -1,6 +1,4 @@
 import './style.css'
-
-
 export const $ = (selectors: string) => {
   return document.querySelector(selectors);
 };
@@ -12,12 +10,63 @@ const app = $('#app')!
 app.innerHTML = `
   <h1>计算 setTimeout 和 setInterval 的误差</h1>
   <button id="setIntervalDelay">
-    setIntervalDelay
+    打印setInterval延迟
   </button>
-`
-function setIntervalDelay() {
+  <button id="setTimeoutDealy">
+    打印setTimeout延迟
+  </button>
+  <ul id='list'></ul>
+  `
+const list = $('#list')!
+
+$('#setIntervalDelay')!.addEventListener(
+  'click',
+  () => {
+    intervalDelay()
+  }
+)
+$('#setTimeoutDealy')!.addEventListener(
+  'click',
+  () => {
+    timeoutDealy()
+  }
+)
+
+setInterval(() => {
+  let i = 0
+  for (let index = 0; index < 1000000000; index++) {
+    i++
+    console.log(i);
+  }
+}, 1000)
+
+// setInterval延迟
+function intervalDelay(timeout = 1000) {
+  // 执行开始时间
+  const startTime = new Date()
+  // 执行次数
+  let count = 0
   setInterval(() => {
-    app.innerHTML += `<li></li>`
-  }, 1000)
+    count++
+    // 延迟时间 = 当前实际时间 - 理论最佳时间(执行开始时间+执行次数*间隔时间)
+    let dealy = new Date().getTime() - (startTime.getTime() + count * timeout)
+    list.innerHTML += `<li>${dealy}ms</li>`
+  }, timeout)
 }
-$('#setIntervalDelay')!.addEventListener('click', setIntervalDelay)
+// setTimeout延迟
+function timeoutDealy(timeout = 1000) {
+  // 执行开始时间
+  const startTime = new Date()
+  // 执行次数
+  let count = 0
+  const timeoutHandler = () => {
+    setTimeout(() => {
+      count++
+      let dealy = new Date().getTime() - (startTime.getTime() + count * timeout)
+      // 延迟时间 = 当前实际时间 - 理论最佳时间(执行开始时间+执行次数*间隔时间)
+      timeoutHandler()
+      list.innerHTML += `<li>${dealy}ms</li>`
+    }, timeout)
+  }
+  timeoutHandler()
+}
