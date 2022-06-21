@@ -31,15 +31,6 @@ $('#setTimeoutDealy')!.addEventListener(
     timeoutDealy()
   }
 )
-
-setInterval(() => {
-  let i = 0
-  for (let index = 0; index < 1000000000; index++) {
-    i++
-    console.log(i);
-  }
-}, 1000)
-
 // setInterval延迟
 function intervalDelay(timeout = 1000) {
   // 执行开始时间
@@ -62,10 +53,10 @@ function timeoutDealy(timeout = 1000) {
   const timeoutHandler = () => {
     setTimeout(() => {
       count++
-      let dealy = new Date().getTime() - (startTime.getTime() + count * timeout)
       // 延迟时间 = 当前实际时间 - 理论最佳时间(执行开始时间+执行次数*间隔时间)
-      timeoutHandler()
+      let dealy = new Date().getTime() - (startTime.getTime() + count * timeout)
       list.innerHTML += `<li>${dealy}ms</li>`
+      timeoutHandler()
     }, timeout)
   }
   timeoutHandler()
