@@ -1,6 +1,6 @@
 import { defineComponent, ref } from "vue";
 
-
+import style from "./index.module.styl";
 
 export default defineComponent({
   name: 'Home',
@@ -17,7 +17,7 @@ export default defineComponent({
       })
     }
     return () => {
-      return <><div>Home</div></>
+      return <><div class={style.title}>Home</div></>
     }
   }
 })
