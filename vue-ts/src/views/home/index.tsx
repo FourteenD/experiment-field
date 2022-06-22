@@ -1,12 +1,19 @@
 import { defineComponent, ref } from "vue";
 
+
+
 export default defineComponent({
   name: 'Home',
   setup() {
-    const todoList = ref([])
+    type todoItme = {
+      name: string,
+      state: 'unfinish' | 'finish'
+    }
+    const todoList = $ref<Array<todoItme>>([])
     const addItme = () => {
-      todoList.value.push({
-        name: '我是代办事项'
+      todoList.push({
+        name: '我是代办事项',
+        state: 'unfinish',
       })
     }
     return () => {
