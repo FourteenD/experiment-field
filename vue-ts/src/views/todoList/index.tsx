@@ -3,7 +3,7 @@ import { defineComponent } from "vue";
 import style from "./index.module.styl";
 
 export default defineComponent({
-  name: "Home",
+  name: "TodoList",
   setup() {
     type todoItem = {
       name: string;
@@ -16,12 +16,10 @@ export default defineComponent({
         state: "notFinish",
       });
     };
-    return () => {
-      return (
-        <>
-          <div class={style.title}>Home</div>
-        </>
-      );
-    };
+    return (
+      <>
+        <div class={style.title}>Home</div>
+      </>
+    );
   },
 });

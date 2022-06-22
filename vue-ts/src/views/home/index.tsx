@@ -1,10 +1,14 @@
 import { defineComponent } from "vue";
 
+import NavBar from "@/components/NavBar";
+
 export default defineComponent({
-  name: "App",
+  name: "Home",
   setup() {
-    return <>
-      
-    </>;
+    return () => (
+      <>
+        <NavBar></NavBar>
+      </>
+    );
   },
 });

@@ -1,14 +1,14 @@
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 import { setRemSize } from "@/utils/rem";
 
 import "normalize.css";
-import "@/common/styl/global.styl"
+import "@/common/styl/global.styl";
 export default defineComponent({
-  name: 'App',
+  name: "App",
   setup() {
-    setRemSize()
+    setRemSize();
   },
   render() {
-    return <router-view></router-view>
-  }
-})
+    return <router-view></router-view>;
+  },
+});
