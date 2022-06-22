@@ -3,21 +3,25 @@ import { defineComponent } from "vue";
 import style from "./index.module.styl";
 
 export default defineComponent({
-  name: 'Home',
+  name: "Home",
   setup() {
-    type todoItme = {
-      name: string,
-      state: 'unfinish' | 'finish'
-    }
-    const todoList = $ref<Array<todoItme>>([])
-    const addItme = () => {
+    type todoItem = {
+      name: string;
+      state: "onfinish" | "finish";
+    };
+    const todoList = $ref<Array<todoItem>>([]);
+    const addItem = () => {
       todoList.push({
-        name: '我是代办事项',
-        state: 'unfinish',
-      })
-    }
+        name: "我是代办事项",
+        state: "onfinish",
+      });
+    };
     return () => {
-      return <><div class={style.title}>Home</div></>
-    }
-  }
-})
+      return (
+        <>
+          <div class={style.title}>Home</div>
+        </>
+      );
+    };
+  },
+});
