@@ -12,6 +12,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
+      '~': './',
       "@": "/src"
     }
   },
@@ -19,9 +20,7 @@ export default defineConfig({
     preprocessorOptions: {
       styl: {
         devSourcemap: true,
-        additionalData: `
-                "~@/common/styl/base";
-            `
+        additionalData: `@import ""`
       }
     }
   },
