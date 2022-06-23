@@ -1,4 +1,6 @@
 import { defineComponent } from "vue";
+import styl from "./index.module.styl";
+
 export default defineComponent({
   name: "NavBar",
   props: {
@@ -10,7 +12,7 @@ export default defineComponent({
   setup(props) {
     return () => (
       <>
-        <div>{props.title}</div>
+        <div class={styl.title}>{props.title}</div>
       </>
     );
   },
