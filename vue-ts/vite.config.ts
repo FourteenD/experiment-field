@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import { resolve } from "path"
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,15 +13,14 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '~': './',
-      "@": "/src"
+      "@": resolve(__dirname, "src"),
     }
   },
   css: {
     preprocessorOptions: {
       styl: {
         devSourcemap: true,
-        additionalData: `@import ""`
+        additionalData: `@import "./src/common/styl/base.styl";`
       }
     }
   },
