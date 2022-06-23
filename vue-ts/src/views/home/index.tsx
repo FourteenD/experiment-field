@@ -7,7 +7,7 @@ export default defineComponent({
   setup() {
     return () => (
       <>
-        <NavBar></NavBar>
+        <NavBar title='首页'></NavBar>
       </>
     );
   },
