@@ -10,6 +10,3 @@ export const setRemSize = (logicWidth = 750, remPx = 100) => {
     setRemSize()
   }
 }
-
-
-// flexible.js 移动端自适应方案
