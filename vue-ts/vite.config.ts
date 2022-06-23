@@ -14,5 +14,13 @@ export default defineConfig({
     alias: {
       "@": "/src"
     }
-  }
+  },
+  css: {
+    preprocessorOptions: {
+      styl: {
+        devSourcemap: true,
+        additionalData: `@import '@/common/styl/base.styl';`
+      }
+    }
+  },
 })
