@@ -19,7 +19,9 @@ export default defineConfig({
     preprocessorOptions: {
       styl: {
         devSourcemap: true,
-        additionalData: `@import '@/common/styl/base.styl';`
+        additionalData: `
+                "~@/common/styl/base";
+            `
       }
     }
   },
