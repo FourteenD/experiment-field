@@ -19,6 +19,7 @@ export default defineConfig({
   },
   css: {
     preprocessorOptions: {
+      // styl样式全局注入
       styl: {
         imports: [resolve(__dirname, "./src/common/styl/base.styl")]
       }
