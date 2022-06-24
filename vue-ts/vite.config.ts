@@ -21,7 +21,12 @@ export default defineConfig({
     preprocessorOptions: {
       // styl样式全局注入
       styl: {
-        imports: [resolve(__dirname, "./src/common/styl/base.styl")]
+        imports: [
+          resolve(__dirname, "./src/common/styl/base.styl"),
+          resolve(__dirname, "./src/common/styl/global.styl"),
+          resolve(__dirname, "./src/common/styl/mixin.styl"),
+          resolve(__dirname, "./src/common/styl/reset.styl")
+        ]
       }
     }
   },
