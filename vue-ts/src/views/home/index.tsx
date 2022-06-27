@@ -19,7 +19,7 @@ export default defineComponent({
     const item = menuList.map((item, index) =>
       <HomeMenuItem onClick={() => clickHandler({ item, index })} emoji={item.emoji} title={item.title}></HomeMenuItem>
     )
-    const clickHandler: (...args: any[]) => void = ({ item, index }) => {
+    const clickHandler: (...args: any[]) => void = ({ item }) => {
       router.push(`@/views${item.path}`)
     }
     return () => (

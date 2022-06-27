@@ -1,6 +1,6 @@
 import { defineComponent, watch } from "vue";
 
-import AddInput from "./components/AddInput";
+import AddInput from "./components/Bottom";
 
 import NavBar from "@/components/NavBar";
 
@@ -18,10 +18,19 @@ export default defineComponent({
     watch(todoList, (nVal, oVal) => {
       console.log(nVal, oVal);
     })
+
+    const addTodoItem = (e: any) => {
+      console.log(e);
+      unfinished.push({
+        text: e,
+        isComplete: false,
+      })
+    }
+
     return () => (
       <>
         <NavBar title="Todo List"></NavBar>
-        <AddInput></AddInput>
+        <AddInput onConfirm={(e) => addTodoItem(e)}></AddInput>
       </>
     )
   },
