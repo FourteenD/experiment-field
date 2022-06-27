@@ -20,11 +20,11 @@ export default defineComponent({
       <HomeMenuItem onClick={() => clickHandler({ item, index })} emoji={item.emoji} title={item.title}></HomeMenuItem>
     )
     const clickHandler: (...args: any[]) => void = ({ item, index }) => {
-      router.push("@/views/todoList")
+      router.push(`@/views${item.path}`)
     }
     return () => (
       <>
-        <NavBar title='首页'></NavBar>
+        <NavBar title='Home'></NavBar>
         {item}
       </>
     );
