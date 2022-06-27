@@ -1,35 +1,35 @@
-import { defineComponent, watch } from "vue";
+import { defineComponent } from "vue";
+import * as Type from "./type";
 
 import AddInput from "./components/Bottom";
-
 import NavBar from "@/components/NavBar";
+import TodoListItem from "./components/TodoListItem";
+
 
 export default defineComponent({
   name: "TodoList",
   setup() {
-    type todoItem = {
-      text: string,
-      isComplete: boolean,
-    }
-    const unfinished = $ref<Array<todoItem>>([])
-    const finished = $ref<Array<todoItem>>([])
+    const unfinished = $ref<Type.TodoList>([])
+    const finished = $ref<Type.TodoList>([])
+    const todoList = $computed(() => [...unfinished, ...finished])
 
-    const todoList = $ref([...unfinished, ...finished])
-    watch(todoList, (nVal, oVal) => {
-      console.log(nVal, oVal);
-    })
-
-    const addTodoItem = (e: any) => {
-      console.log(e);
+    const addTodoItem = (title: string) => {
       unfinished.push({
-        text: e,
-        isComplete: false,
+        title,
+        state: "unfinished",
       })
     }
-
+    const removeTodoItem = (index: number) => {
+      unfinished.splice(index, 1)
+    }
     return () => (
       <>
         <NavBar title="Todo List"></NavBar>
+        {
+          todoList.map((item) =>
+            <TodoListItem></TodoListItem>
+          )
+        }
         <AddInput onConfirm={(e) => addTodoItem(e)}></AddInput>
       </>
     )
