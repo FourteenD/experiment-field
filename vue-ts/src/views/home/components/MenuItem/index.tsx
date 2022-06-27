@@ -1,19 +1,16 @@
-import { defineComponent, defineEmits } from "vue";
+import { defineComponent, type ExtractPropTypes, defineProps } from "vue";
 
 import styl from "./index.module.styl";
 
+const props = {
+  emoji: String,
+  title: String
+};
+export type Props = ExtractPropTypes<typeof props>;
+
 export default defineComponent({
   name: 'HomeMenuItem',
-  props: {
-    emoji: {
-      type: String,
-      default: '📅'
-    },
-    title: {
-      type: String,
-      default: '标题'
-    }
-  },
+  props: props,
   setup(props) {
     return () => (
       <div class={styl.item}>

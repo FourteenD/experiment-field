@@ -2,8 +2,7 @@ import { defineComponent } from "vue";
 
 import NavBar from "@/components/NavBar";
 
-import HomeMenuItem from "./components/HomeMenuItem";
-import { log } from "console";
+import HomeMenuItem from "./components/MenuItem";
 
 export default defineComponent({
   name: "Home",
