@@ -1,4 +1,4 @@
-import { defineComponent, watch } from "vue";
+import { defineComponent } from "vue";
 import Input from "../Input";
 
 import styl from "./index.module.styl";
