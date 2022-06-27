@@ -5,6 +5,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "Home",
     component: () => import("@/views/home"),
   },
+  {
+    path: "/todoList",
+    name: "TdoList",
+    component: () => import("@/views/todoList"),
+  },
 ];
 
 const router = createRouter({
