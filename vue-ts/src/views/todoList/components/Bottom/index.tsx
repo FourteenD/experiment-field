@@ -3,6 +3,12 @@ import Input from "../Input";
 
 import styl from "./index.module.styl";
 
+export type BottomPropsType = {
+  confirmText: {
+    type: String,
+    default: "添加",
+  },
+}
 export default defineComponent({
   name: "AddInput",
   props: {

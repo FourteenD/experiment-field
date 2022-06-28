@@ -15,10 +15,12 @@ export default defineComponent({
       if (props.isActive) isActiveArr[1] = styl.check_activity;
       return h("div", {
         class: isActiveArr,
-        onClick: check(),
+        onClick: () => check(),
       });
     };
+    const isActiveArr = $ref([styl.check] as any[]);
     const check = () => {
+      if (props.isActive) isActiveArr[1] = styl.check_activity;
       emit("check");
     };
     const delComponent = () => {
