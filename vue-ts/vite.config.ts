@@ -1,21 +1,21 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
-import { resolve } from 'path'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import vueJsx from "@vitejs/plugin-vue-jsx";
+import { resolve } from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue({
-      reactivityTransform: true
+      reactivityTransform: true,
     }),
-    vueJsx()
+    vueJsx(),
   ],
   resolve: {
     alias: {
-      "@": resolve(__dirname, "/src"),
-      vue: "vue/dist/vue.esm-bundler.js"
-    }
+      "@": resolve(__dirname, "./src"),
+      vue: "vue/dist/vue.esm-bundler.js",
+    },
   },
   css: {
     preprocessorOptions: {
@@ -25,9 +25,9 @@ export default defineConfig({
           resolve(__dirname, "./src/common/styl/base.styl"),
           resolve(__dirname, "./src/common/styl/global.styl"),
           resolve(__dirname, "./src/common/styl/mixin.styl"),
-          resolve(__dirname, "./src/common/styl/reset.styl")
-        ]
-      }
-    }
+          resolve(__dirname, "./src/common/styl/reset.styl"),
+        ],
+      },
+    },
   },
-})
+});

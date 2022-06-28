@@ -1,8 +1,6 @@
 import { createApp } from 'vue'
 import router from './router'
-import App from './App.jsx'
-import "@/common/styl/base.styl"
-
+import App from "./App.jsx";
 
 const app = createApp(App)
 app.use(router)
