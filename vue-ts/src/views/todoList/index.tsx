@@ -8,23 +8,37 @@ import TodoListItem from "./components/TodoListItem";
 export default defineComponent({
   name: "TodoList",
   setup() {
-    const unfinished = $ref<Type.TodoList>([]);
-    const finished = $ref<Type.TodoList>([]);
-    const todoList = $computed(() => [...unfinished, ...finished]);
+    const todoList = $ref<Type.TodoList>([]);
+
     const addTodoItem = (title: string) => {
-      unfinished.push({
+      todoList.push({
         title,
         state: "unfinished",
       });
     };
     const removeTodoItem = (index: number) => {
-      unfinished.splice(index, 1);
+      todoList.splice(index, 1);
     };
+
+    const toggleTodoItem = (index: number) => {
+      console.log(index);
+
+      todoList[index].state =
+        todoList[index].state === "finished" ? "unfinished" : "finished";
+      todoList.push(todoList[index]);
+      todoList.splice(index, 1);
+    };
+
     return () => (
       <>
         <NavBar title="Todo List"></NavBar>
-        {todoList.map((item) => (
-          <TodoListItem></TodoListItem>
+        {todoList.map((item, index) => (
+          <TodoListItem
+            title={item.title}
+            isActive={item.state == "finished"}
+            onDel={() => removeTodoItem(index)}
+            onCheck={() => toggleTodoItem(index)}
+          ></TodoListItem>
         ))}
         <AddInput onConfirm={(e) => addTodoItem(e)}></AddInput>
       </>
