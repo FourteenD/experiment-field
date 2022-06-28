@@ -10,10 +10,12 @@ import styl from "./index.module.styl";
 export default defineComponent({
   name: "TodoList",
   setup() {
+    const searchContent = $ref("");
     let content = $ref<any>();
     const todoList = $ref<Type.TodoList>([]);
 
     const addTodoItem = (title: string) => {
+      if (!title) return;
       todoList.push({
         title,
         state: "unfinished",
@@ -28,8 +30,6 @@ export default defineComponent({
     const toggleTodoItem = (index: number) => {
       todoList[index].state =
         todoList[index].state === "finished" ? "unfinished" : "finished";
-      todoList.push(todoList[index]);
-      todoList.splice(index, 1);
       setTodoList(todoList);
     };
 
@@ -44,14 +44,18 @@ export default defineComponent({
         ></TodoListItem>
       ));
     };
-    const searchContent = $ref("");
     watch(
       () => searchContent,
-      (nVal, oVal) => {
+      (nVal) => {
         if (nVal.length) {
-          todoList.filter((item) => {
-            return;
+          let str = ["", ...nVal, ""].join(".*");
+          let reg = new RegExp(str);
+          const res = todoList.filter((item) => {
+            return reg.test(item.title);
           });
+          setTodoList(res);
+        } else {
+          setTodoList(todoList);
         }
       },
       { deep: true, immediate: true }
